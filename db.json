@@ -7,11 +7,10 @@
     { "id": 1, "name": "wade warren", "position": "marketing coordinator" },
     {
       "id": 2,
-      "isActive": true,
-      "activeLayer": "card-person__layer--active",
+      "activeLayer": true,
       "name": "floyd miles",
       "position": "web designer",
-      "activeContact": "card-person__contact--active"
+      "activeContact": true
     },
     { "id": 3, "name": "brooklyn simmons", "position": "nursing assistant" },
     { "id": 4, "name": "ralph edwards", "position": "marketing coordinator" },

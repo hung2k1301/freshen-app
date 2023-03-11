@@ -8,8 +8,8 @@ interface ICardPerson {
   name: string;
   position: string;
   isActive?: boolean;
-  activeLayer?: string;
-  activeContact?: string;
+  activeLayer?: true;
+  activeContact?: true;
 }
 
 interface IBanner2 {
