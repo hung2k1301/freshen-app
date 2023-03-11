@@ -1,20 +1,18 @@
-interface CardIg {
-  isActive?: boolean;
-  iconActive?: string;
-}
-
-const cardInstagram: CardIg[] = [
-  {},
-  { isActive: true, iconActive: "card-ig__icon--active" },
-  {},
-  {},
-  {},
-];
+import { ICardIg } from "@/types";
+import { getCardInstagram } from "@/services/api";
+import { useQuery } from "react-query";
 
 export function CardInstagram(): JSX.Element {
+  const { isLoading, data } = useQuery<ICardIg[]>(
+    "home-page-cardInstagram",
+    getCardInstagram
+  );
+
+  if (isLoading) return <h3>Loading...</h3>;
+
   return (
     <>
-      {cardInstagram.map((cardData, index) => (
+      {data?.map((cardData, index) => (
         <div className="col-span-2" key={index}>
           <a href="" className="card-ig">
             <img

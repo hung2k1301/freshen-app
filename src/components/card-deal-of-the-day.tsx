@@ -1,43 +1,18 @@
-interface CardDealDay {
-  isActive?: boolean;
-  title: string;
-  name: string;
-  volume: string;
-  price: number;
-}
-
-const cardDealDay: CardDealDay[] = [
-  {
-    isActive: true,
-    title: "fruits",
-    name: "pineapple (tropical gold)",
-    volume: "1 lb",
-    price: 1.8,
-  },
-  {
-    title: "fruits",
-    name: "pineapple (tropical gold)",
-    volume: "1 lb",
-    price: 1.8,
-  },
-  {
-    title: "fruits",
-    name: "pineapple (tropical gold)",
-    volume: "1 lb",
-    price: 1.8,
-  },
-  {
-    title: "fruits",
-    name: "pineapple (tropical gold)",
-    volume: "1 lb",
-    price: 1.8,
-  },
-];
+import { ICardDealDay } from "@/types";
+import { getCardDealDay } from "@/services/api";
+import { useQuery } from "react-query";
 
 export function CardDealDay(): JSX.Element {
+  const { isLoading, data } = useQuery<ICardDealDay[]>(
+    "home-page-cardDealDay",
+    getCardDealDay
+  );
+
+  if (isLoading) return <h3>Loading...</h3>;
+
   return (
     <>
-      {cardDealDay.map((cardData,index) => (
+      {data?.map((cardData, index) => (
         <div className="xl:col-span-3" key={index}>
           <a
             className={`card-deal-day ${
@@ -67,9 +42,7 @@ export function CardDealDay(): JSX.Element {
             <p className="card-deal-day__volume">{cardData.volume}</p>
             <p className="card-deal-day__price">${cardData.price}</p>
 
-            <div
-              className="card-deal-day__state-bar"
-            ></div>
+            <div className="card-deal-day__state-bar"></div>
 
             <p className="card-deal-day__state-available">
               <span>

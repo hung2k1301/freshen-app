@@ -1,26 +1,15 @@
-interface BannerData {
-  src: string;
-  text1: string;
-  text2: string;
-  textSeparate: string;
-}
-
-const banner2Data: BannerData[] = [
-  {
-    src: "https://picsum.photos/id/141/800/400",
-    text1: "seasonal sale",
-    text2: "up to breads",
-    textSeparate: "50% off",
-  },
-  {
-    src: "https://picsum.photos/id/162/800/400",
-    text1: "tasty healthy",
-    text2: "fresh",
-    textSeparate: "vegetables",
-  },
-];
+import { IBanner2 } from "@/types";
+import { getBanner2 } from "@/services/api";
+import { useQuery } from "react-query";
 
 export function Banner2(): JSX.Element {
+  const { isLoading, data } = useQuery<IBanner2[]>(
+    "home-page-banner2",
+    getBanner2
+  );
+
+  if (isLoading) return <h3>Loading...</h3>;
+
   return (
     <div className="container">
       <div className="grid grid-cols-12 gap-7">
@@ -47,7 +36,7 @@ export function Banner2(): JSX.Element {
           </div>
         </div>
 
-        {banner2Data.map((data, index) => (
+        {data?.map((data, index) => (
           <div className="col-span-12 lg:col-span-3" key={index}>
             <div className="banner-2">
               <img

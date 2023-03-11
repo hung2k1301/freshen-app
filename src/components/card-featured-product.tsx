@@ -1,73 +1,18 @@
-interface FeaturedProduct {
-  cardActive?: string;
-  behaviourActive?: string;
-  isTag?: boolean;
-  btnActive?: string;
-  title: string;
-  name: string;
-  volume: string;
-  price: string;
-}
-
-const cardFeaturedProduct: FeaturedProduct[] = [
-  {
-    cardActive: "ft-product-card--active",
-    behaviourActive: "ft-product-card__behaviour--active",
-    title: "fruits",
-    name: "pineapple (tropical gold)",
-    volume: "1lb",
-    price: "2.00",
-    btnActive: "ft-product-card__btn--active",
-  },
-  {
-    title: "vegetables",
-    name: "organic rocket",
-    volume: "1lb",
-    price: "2.00",
-  },
-  {
-    isTag: true,
-    title: "food & grocery",
-    name: "silver heinz ketchup",
-    volume: "350ml",
-    price: "7.63",
-  },
-  {
-    title: "food & grocery",
-    name: "augason farms freeze dried",
-    volume: "Beef Chunks (Pack of 6)",
-    price: "64.92",
-  },
-  {
-    title: "fruits",
-    name: "organic rocket",
-    volume: "1 lb",
-    price: "2.00",
-  },
-  {
-    title: "fruits",
-    name: "organic rocket",
-    volume: "1 lb",
-    price: "2.00",
-  },
-  {
-    title: "fruits",
-    name: "silver heinz ketchup",
-    volume: "350 ml",
-    price: "7.63",
-  },
-  {
-    title: "see food",
-    name: "augason farms freeze dried",
-    volume: "Beef Chunks (Pack of 6)",
-    price: "64.92",
-  },
-];
+import { ICardFeaturedProduct } from "@/types";
+import { getCardFeaturedProduct } from "@/services/api";
+import { useQuery } from "react-query";
 
 export function CardFeaturedProduct(): JSX.Element {
+  const { isLoading, data } = useQuery<ICardFeaturedProduct[]>(
+    "home-page-cardFeaturedProduct",
+    getCardFeaturedProduct
+  );
+
+  if (isLoading) return <h3>Loading...</h3>;
+
   return (
     <>
-      {cardFeaturedProduct.map((cardData, index) => (
+      {data?.map((cardData, index) => (
         <div className="col-span-3 lg:col-span-4 xl:col-span-3" key={index}>
           <a
             className={`ft-product-card ${cardData.cardActive} pt-5 xl:pt-[11px] px-0 xl:px-[30px]`}
@@ -90,7 +35,10 @@ export function CardFeaturedProduct(): JSX.Element {
                   </div>
                 </div>
               )}
-              <div className="ft-product-card__behaviour {{this.behaviourActive}} hidden xl:flex border-none xl:border-solid">
+
+              <div
+                className={`ft-product-card__behaviour ${cardData.behaviourActive} hidden xl:flex border-none xl:border-solid"`}
+              >
                 <div className="ft-product-card__save">
                   <img src="/images/green-heart.svg" alt="Save icon" />
                 </div>
@@ -120,7 +68,7 @@ export function CardFeaturedProduct(): JSX.Element {
             <div className="ft-product-card__price-container">
               <p className="ft-product-card__price">${cardData.price}</p>
 
-              <button className="ft-product-card__btn {{this.btnActive}}">
+              <button className={`ft-product-card__btn ${cardData.btnActive}`}>
                 <img src="/images/white-cart.svg" alt="cart" />
                 ADD TO CART
               </button>

@@ -1,17 +1,18 @@
-interface CardBlogData {
-  cardBlogTitle: string;
-}
-
-const cardBlogData: CardBlogData[] = [
-  { cardBlogTitle: "how to make a fresh juice blended for your family?" },
-  { cardBlogTitle: "creative water features and exterior design" },
-  { cardBlogTitle: "what are organic? all you need to know" },
-];
+import { ICardBlog } from "@/types";
+import { getCardBlog } from "@/services/api";
+import { useQuery } from "react-query";
 
 export function CardBlog(): JSX.Element {
+  const { isLoading, data } = useQuery<ICardBlog[]>(
+    "home-page-cardBlog",
+    getCardBlog
+  );
+
+  if (isLoading) return <h3>Loading...</h3>;
+
   return (
     <>
-      {cardBlogData.map((data, index) => (
+      {data?.map((data, index) => (
         <div className="col-span-full sm:col-span-3 lg:col-span-4" key={index}>
           <div className="card-blog">
             <div className="card-blog__thumbnail">

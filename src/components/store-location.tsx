@@ -1,17 +1,18 @@
-interface Location {
-  heading: string;
-}
-
-const storeLocation: Location[] = [
-  { heading: "london" },
-  { heading: "istanbul" },
-  { heading: "new york" },
-];
+import { IStoreLocation } from "@/types";
+import { getStoreLocation } from "@/services/api";
+import { useQuery } from "react-query";
 
 export function StoreLocation(): JSX.Element {
+  const { isLoading, data } = useQuery<IStoreLocation[]>(
+    "storeLocation",
+    getStoreLocation
+  );
+
+  if (isLoading) return <h3>Loading...</h3>;
+
   return (
     <>
-      {storeLocation.map((locationData, index) => (
+      {data?.map((locationData, index) => (
         <div className="store-location" key={index}>
           <h2 className="store-location__heading">
             store in {locationData.heading}

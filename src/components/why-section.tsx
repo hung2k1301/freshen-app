@@ -1,38 +1,18 @@
-interface WhySection {
-  image: string;
-  alt: string;
-  text1: string;
-  text2: string;
-}
-
-const whySection: WhySection[] = [
-  {
-    image: "/images/scooter.svg",
-    alt: "scooter",
-    text1: "we drive fast & ship faster",
-    text2:
-      "Sed semper convallis ultricies. Aliqua erat vol esent friday ngilla augue.",
-  },
-  {
-    image: "/images/cash.svg",
-    alt: "cash",
-    text1: "we save your more money",
-    text2:
-      "Sed semper convallis ultricies. Aliqua erat vol esent friday ngilla augue.",
-  },
-  {
-    image: "/images/sale-tag-icon.svg",
-    alt: "sale-tag-icon",
-    text1: "daily discount coupons",
-    text2:
-      "Sed semper convallis ultricies. Aliqua erat vol esent friday ngilla augue.",
-  },
-];
+import { IWhySection } from "@/types";
+import { getWhySection } from "@/services/api";
+import { useQuery } from "react-query";
 
 export function WhySection(): JSX.Element {
+  const { isLoading, data } = useQuery<IWhySection[]>(
+    "whySection",
+    getWhySection
+  );
+
+  if (isLoading) return <h3>Loading...</h3>;
+
   return (
     <>
-      {whySection.map((whyData, index) => (
+      {data?.map((whyData, index) => (
         <div className="col-span-full lg:col-span-4" key={index}>
           <div className="why">
             <div className="why__img-bg">

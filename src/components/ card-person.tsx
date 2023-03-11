@@ -1,30 +1,18 @@
-interface CardPersonData {
-  name: string;
-  position: string;
-  isActive?: boolean;
-  activeLayer?: string;
-  activeContact?: string;
-}
-
-const cardPerson: CardPersonData[] = [
-  { name: "wade warren", position: "marketing coordinator" },
-  {
-    isActive: true,
-    activeLayer: "card-person__layer--active",
-    name: "floyd miles",
-    position: "web designer",
-    activeContact: "card-person__contact--active",
-  },
-  { name: "brooklyn simmons", position: "nursing assistant" },
-  { name: "ralph edwards", position: "marketing coordinator" },
-  { name: "leslie alexander", position: "dog trainer" },
-  { name: "eleanor pena", position: "presidentof sales" },
-];
+import { ICardPerson } from "@/types";
+import { getCardPerson } from "@/services/api";
+import { useQuery } from "react-query";
 
 export function CardPerson(): JSX.Element {
+  const { isLoading, data } = useQuery<ICardPerson[]>(
+    "cardPerson",
+    getCardPerson
+  );
+
+  if (isLoading) return <h3>Loading...</h3>;
+
   return (
     <>
-      {cardPerson.map((cardData, index) => (
+      {data?.map((cardData, index) => (
         <div className="col-span-2 xl:col-span-2" key={index}>
           <div className="card-person">
             {cardData.isActive ? (
@@ -35,7 +23,9 @@ export function CardPerson(): JSX.Element {
                     alt=""
                     className="card-person__img"
                   />
-                  <div className="card-person__layer {{this.active-layer}}"></div>
+                  <div
+                    className={`card-person__layer ${cardData.activeLayer}`}
+                  ></div>
                 </div>
 
                 <div className="card-person__title">
@@ -43,7 +33,9 @@ export function CardPerson(): JSX.Element {
                   <p className="card-person__position">{cardData.position} </p>
                 </div>
 
-                <div className="card-person__contact {{this.active-contact}}">
+                <div
+                  className={`card-person__contact ${cardData.activeContact}`}
+                >
                   <a href="">
                     <img src="/images/fb-icon-black.svg" alt="" />
                   </a>
