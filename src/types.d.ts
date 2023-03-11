@@ -32,10 +32,10 @@ interface ICardDealDay {
 }
 
 interface ICardFeaturedProduct {
-  cardActive?: string;
-  behaviourActive?: string;
+  cardActive?: boolean;
+  behaviourActive?: boolean;
   isTag?: boolean;
-  btnActive?: string;
+  btnActive?: boolean;
   title: string;
   name: string;
   volume: string;

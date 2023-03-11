@@ -98,13 +98,13 @@
   "cardFeaturedProduct": [
     {
       "id": 1,
-      "cardActive": "ft-product-card--active",
-      "behaviourActive": "ft-product-card__behaviour--active",
+      "cardActive": true,
+      "behaviourActive": true,
       "title": "fruits",
       "name": "pineapple (tropical gold)",
       "volume": "1lb",
       "price": "2.00",
-      "btnActive": "ft-product-card__btn--active"
+      "btnActive": true
     },
     {
       "id": 2,

@@ -15,7 +15,9 @@ export function CardFeaturedProduct(): JSX.Element {
       {data?.map((cardData, index) => (
         <div className="col-span-3 lg:col-span-4 xl:col-span-3" key={index}>
           <a
-            className={`ft-product-card ${cardData.cardActive} pt-5 xl:pt-[11px] px-0 xl:px-[30px]`}
+            className={`ft-product-card ${
+              cardData.cardActive ? "ft-product-card--active" : ""
+            } pt-5 xl:pt-[11px] px-0 xl:px-[30px]`}
             href=""
           >
             <div className="ft-product-card__thumbnail">
@@ -37,7 +39,11 @@ export function CardFeaturedProduct(): JSX.Element {
               )}
 
               <div
-                className={`ft-product-card__behaviour ${cardData.behaviourActive} hidden xl:flex border-none xl:border-solid"`}
+                className={`ft-product-card__behaviour ${
+                  cardData.behaviourActive
+                    ? "ft-product-card__behaviour--active"
+                    : ""
+                } hidden xl:flex border-none xl:border-solid"`}
               >
                 <div className="ft-product-card__save">
                   <img src="/images/green-heart.svg" alt="Save icon" />
@@ -68,7 +74,11 @@ export function CardFeaturedProduct(): JSX.Element {
             <div className="ft-product-card__price-container">
               <p className="ft-product-card__price">${cardData.price}</p>
 
-              <button className={`ft-product-card__btn ${cardData.btnActive}`}>
+              <button
+                className={`ft-product-card__btn ${
+                  cardData.btnActive ? "ft-product-card__btn--active" : ""
+                }`}
+              >
                 <img src="/images/white-cart.svg" alt="cart" />
                 ADD TO CART
               </button>
