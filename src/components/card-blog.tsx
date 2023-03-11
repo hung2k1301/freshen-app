@@ -12,7 +12,7 @@ export function CardBlog(): JSX.Element {
 
   return (
     <>
-      {data?.map((data, index) => (
+      {data?.map((dataCardBlog, index) => (
         <div className="col-span-full sm:col-span-3 lg:col-span-4" key={index}>
           <div className="card-blog">
             <div className="card-blog__thumbnail">
@@ -30,7 +30,7 @@ export function CardBlog(): JSX.Element {
             </div>
 
             <a href="" className="card-blog__title">
-              {data["cardBlogTitle"]}
+              {dataCardBlog.cardBlogTitle}
             </a>
 
             <div className="card-blog__author">
