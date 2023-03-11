@@ -217,6 +217,48 @@
     { "id": 3, "heading": "new york" }
   ],
 
+  "whyChooseContent1": [
+    {
+      "id": 1,
+      "backgroundColor": "#bfd6ca",
+      "src": "/images/love.svg",
+      "heading": "eat more healthfully"
+    },
+    {
+      "id": 2,
+      "backgroundColor": "#ffd96a",
+      "src": "/images/lemon.svg",
+      "heading": "we have reputation"
+    },
+    {
+      "id": 3,
+      "backgroundColor": "#cf3e3b",
+      "src": "/images/carrot.svg",
+      "heading": "fresh & pesticide free"
+    }
+  ],
+
+  "whyChooseContent2": [
+    {
+      "id": 1,
+      "backgroundColor": "#849d6a",
+      "src": "/images/broccoli.svg",
+      "heading": "no commitment required"
+    },
+    {
+      "id": 2,
+      "backgroundColor": "#4f4f4f",
+      "src": "/images/salad.svg",
+      "heading": "flexibility"
+    },
+    {
+      "id": 3,
+      "backgroundColor": "#f2b23e",
+      "src": "/images/apple.svg",
+      "heading": "customization"
+    }
+  ],
+
   "whySection": [
     {
       "id": 1,
