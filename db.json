@@ -200,6 +200,17 @@
     }
   ],
 
+  "navBar": [
+    { "id": 1, "name": "HOME", "arrowIcon": true },
+    { "id": 2, "name": "FRESH FOOD" },
+    { "id": 3, "name": "BAKERY" },
+    { "id": 4, "name": "DRINKS" },
+    { "id": 5, "name": "SHOP", "arrowIcon": true },
+    { "id": 6, "name": "PAGES", "arrowIcon": true },
+    { "id": 7, "name": "BLOG", "arrowIcon": true },
+    { "id": 8, "name": "CONTACT" }
+  ],
+
   "storeLocation": [
     { "id": 1, "heading": "london" },
     { "id": 2, "heading": "istanbul" },
